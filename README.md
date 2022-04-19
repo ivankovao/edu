@@ -1,1 +1,1 @@
-# edu
+# This is an empty project
