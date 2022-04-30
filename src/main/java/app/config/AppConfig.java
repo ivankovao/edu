@@ -9,12 +9,8 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 @ComponentScan(basePackages = "app")
 public class AppConfig {
-
-
-
     @Bean
-    @Scope("prototype")
-    Timer timer(){
+    Timer timer() {
         return new Timer();
     }
 }
