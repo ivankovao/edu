@@ -2,6 +2,7 @@ package ru.feature.edu.repository;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,7 @@ import ru.feature.edu.model.User;
 @Repository
 public class UserDaoImp implements UserDao {
 
+    @PersistenceContext
     private EntityManager entityManager;
 
     public UserDaoImp() {

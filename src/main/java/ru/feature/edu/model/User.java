@@ -1,6 +1,7 @@
 package ru.feature.edu.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "USER_D")
@@ -59,5 +60,18 @@ public class User {
 
     public String toString() {
         return "User{id=" + this.id + ", name='" + this.name + '\'' + ", city='" + this.city + '\'' + ", age=" + this.age + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && age == user.age && name.equals(user.name) && city.equals(user.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, city, age);
     }
 }

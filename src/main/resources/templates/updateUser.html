@@ -5,7 +5,7 @@
     <title>Update user</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/update}" th:object="${user}">
+<form th:method="POST" th:action="@{/admin/update}" th:object="${user}">
 
     <input type="hidden" th:field="*{id}" th:value="*{getId()}">
 

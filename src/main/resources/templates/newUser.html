@@ -6,7 +6,7 @@
     <title>Create new User</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/new}" th:object="${user}">
+<form th:method="POST" th:action="@{/admin/new}" th:object="${user}">
 
     <input type="hidden" th:field="*{id}" th:value="*{getId()}">
 

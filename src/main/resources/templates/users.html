@@ -14,8 +14,8 @@
             <b th:text="${user.name}"></b>
             <b th:text="${user.city}"></b>
             <b th:text="${user.age}"></b>
-             <a type="button" th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit</a>
-             <a type="button" th:href="@{/users/delete(id=${user.getId()})}">Delete</a>
+             <a type="button" th:href="@{/admin/{id}/edit(id=${user.getId()})}">Edit</a>
+             <a type="button" th:href="@{/admin/delete(id=${user.getId()})}">Delete</a>
 
              <hr>
 
@@ -26,7 +26,7 @@
             <p>В базе данных нет пользователей. Пожалуйта, добавьте пользователя.</p>
         </div>
 
-        <form action="/new" >
+        <form action="/admin/new" >
             <button>Добавить пользователя</button>
         </form>
 
