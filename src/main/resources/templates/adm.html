@@ -11,22 +11,32 @@
         <h2>Список пользователей</h2>
 <hr>
          <th:block
-                 th:each="user : ${listUsers}">
-            <b th:text="${user.id}"></b>
-            <b th:text="${user.name}"></b>
-            <b th:text="${user.username}"></b>
+                 th:each="user : ${list}">
+             <b th:text="${user.id}"></b>
+             <b th:text="${user.name}"></b>
+             <b th:text="${user.username}"></b>
              <th:block
                      th:each="role : ${user.getRoles()}">
                  <b th:text="${role.id}"></b>
                  <b th:text="${role.name}"></b>
              </th:block>
+             <a type="button" th:href="@{/admin/{id}/edit(id=${user.getId()})}">Edit</a>
+             <a type="button" th:href="@{/admin/delete(id=${user.getId()})}">Delete</a>
+
+
              <hr>
 
          </th:block>
         <hr>
-        <div th:remove="${listUsers.size() != 0} ? all">
+
+        <div th:remove="${list.size() != 0} ? all">
             <p>В базе данных нет пользователей</p>
         </div>
+
+        <form action="/admin/new" >
+            <button>Добавить пользователя</button>
+        </form>
+
         <a type="button" th:href="@{/logout}">Logout</a>
     </body>
 </html>
