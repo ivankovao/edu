@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import ru.web.model.User;
 
+
+
 public interface UserRepo extends JpaRepository<User, Long> {
 
     /**

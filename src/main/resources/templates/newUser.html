@@ -22,9 +22,12 @@
 
         <div>
             <label for="password">Password</label>
-            <input type="text" id="password" th:field="*{password}" th:value="*{getPassword()}" placeholder="Enter password" required>
+            <input type="password" id="password" th:field="*{password}" th:value="*{getPassword()}" placeholder="Enter password" required>
         </div>
-
+        <div>
+            <label for="role">Role</label>
+            <input type="text" id="role" th:field="*{role}" th:value="*{getRole()}" placeholder="Enter role" required>
+        </div>
 
     <button type="submit" th:text="Create"/>
 

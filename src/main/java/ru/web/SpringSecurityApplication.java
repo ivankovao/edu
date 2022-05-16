@@ -32,11 +32,11 @@ public class SpringSecurityApplication {
             userService.saveRole(new Role(null,"ROLE_USER"));
             userService.saveRole(new Role(null,"ROLE_MANAGER"));
             userService.saveRole(new Role(null,"ROLE_ADMIN"));
-            userService.saveUser(new User(null, "John Travolta", "john123", "1234", new HashSet<>()));
-            userService.saveUser(new User(null, "Jim Carry", "jim777", "1234", new HashSet<>()));
-            userService.saveUser(new User(null, "Will Smith", "will2022", "1234", new HashSet<>()));
+            userService.saveUser(new User(null, "John Travolta", "john123", "1234", new HashSet<>(), null));
+            userService.saveUser(new User(null, "Jim Carry", "jim777", "1234", new HashSet<>(), null));
+            userService.saveUser(new User(null, "Will Smith", "will2022", "1234", new HashSet<>(), null));
 
-          userService.addRoleToUser("john123","ROLE_USER");
+            userService.addRoleToUser("john123","ROLE_USER");
             userService.addRoleToUser("jim777","ROLE_ADMIN");
             userService.addRoleToUser("jim777","ROLE_MANAGER");
             userService.addRoleToUser("will2022","ROLE_MANAGER");

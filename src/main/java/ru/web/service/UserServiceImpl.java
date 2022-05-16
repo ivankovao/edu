@@ -80,14 +80,16 @@ public class UserServiceImpl implements UserService, UserDetailsService{
     @Override
     public User getUserById(Long id) {
         log.info("Getting all users");
-        return userRepo.getById(id);
+        User user = userRepo.getById(id);
+        return user;
     }
 
     @Override
     public void updateUser(User user) {
         log.info("Updating user {}", user.getName());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepo.updateUser(user.getName(), user.getUsername(), user.getPassword(), user.getId());
+        userRepo.updateUser(user.getName(), user.getUsername(),
+                user.getPassword(), user.getId());
     }
 
     @Override
@@ -110,6 +112,4 @@ public class UserServiceImpl implements UserService, UserDetailsService{
         user.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
     }
-
-
 }

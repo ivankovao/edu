@@ -15,6 +15,8 @@
              <b th:text="${user.id}"></b>
              <b th:text="${user.name}"></b>
              <b th:text="${user.username}"></b>
+
+
              <th:block
                      th:each="role : ${user.getRoles()}">
                  <b th:text="${role.id}"></b>

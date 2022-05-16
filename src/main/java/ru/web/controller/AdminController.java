@@ -5,10 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.web.model.Role;
 import ru.web.model.User;
 import ru.web.service.UserService;
-
-
 
 @Controller
 @RequestMapping("/admin")
@@ -34,13 +33,16 @@ public class AdminController {
 
     @PostMapping("/new")
     public String saveUser(@ModelAttribute("user") User user) {
-        this.userService.saveUser(user);
+        Role role = new Role(null, user.getRole());
+        user.getRoles().add(role);
+        userService.saveUser(user);
         return "redirect:/admin";
     }
 
     @GetMapping("/{id}/edit")
     public String editUserForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", this.userService.getUserById(id));
+        User user = this.userService.getUserById(id);
+        model.addAttribute("user", user);
         return "/updateUser";
     }
 
