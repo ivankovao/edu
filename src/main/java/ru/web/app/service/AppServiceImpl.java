@@ -57,8 +57,16 @@ public class AppServiceImpl implements AppService {
                 new IllegalArgumentException(String.format("User with ID %d not found", userId)));
     }
 
+    @Override
     public void insertUser(User user, RedirectAttributes redirectAttributes) {
-        addRedirectAttributesIfErrorsExists(user, redirectAttributes);
+        String oldPassword = user.getPassword();
+        try {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+        } catch (DataIntegrityViolationException e) {
+            user.setPassword(oldPassword);
+            addRedirectAttributesIfErrorsExists(user, redirectAttributes);
+        }
     }
 
     private void addRedirectAttributesIfErrorsExists(User user, RedirectAttributes redirectAttributes) {
@@ -70,7 +78,7 @@ public class AppServiceImpl implements AppService {
     public void updateUser(User user) {
             String oldPassword = user.getPassword();
             try {
-                user.setPassword(user.getPassword().isEmpty() ? // todo если нет такого юзера try
+                user.setPassword(user.getPassword().isEmpty() ?
                         findUser(user.getId()).getPassword() :
                         passwordEncoder.encode(user.getPassword()));
                 userRepository.save(user);
